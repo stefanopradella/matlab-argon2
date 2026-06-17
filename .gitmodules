@@ -1,0 +1,3 @@
+[submodule "matlab-blake2"]
+	path = matlab-blake2
+	url = https://codeberg.org/stefanopradella/matlab_blake2
