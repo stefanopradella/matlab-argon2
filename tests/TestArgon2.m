@@ -1,6 +1,42 @@
 classdef TestArgon2 < matlab.unittest.TestCase
 
     methods (Test)
+        function Argon2d_RFC9106(testCase)
+            % RFC 9106 - Section 5.1
+
+            password        = char(repelem(uint8(1), 32, 1));
+            salt            = char(repelem(uint8(2), 16, 1));
+            p               = 4;
+            T               = 32;
+            m               = 32;
+            nPasses         = 3;
+            secret          = char(repelem(uint8(3), 8, 1));
+            associatedData  = char(repelem(uint8(4), 12, 1));
+            expectedValue   = '512B391B6F1162975371D30919734294F868E3BE3984F3C1A13A4DB9FABE4ACB';
+
+            tag = argon2d(password, salt, p, T, m, nPasses, secret, associatedData);
+
+            testCase.verifyEqual(blake2impl.bytesToHex(tag), expectedValue);
+        end
+
+        function Argon2i_RFC9106(testCase)
+            % RFC 9106 - Section 5.2
+
+            password        = char(repelem(uint8(1), 32, 1));
+            salt            = char(repelem(uint8(2), 16, 1));
+            p               = 4;
+            T               = 32;
+            m               = 32;
+            nPasses         = 3;
+            secret          = char(repelem(uint8(3), 8, 1));
+            associatedData  = char(repelem(uint8(4), 12, 1));
+            expectedValue   = 'C814D9D1DC7F37AA13F0D77F2494BDA1C8DE6B016DD388D29952A4C4672B6CE8';
+
+            tag = argon2i(password, salt, p, T, m, nPasses, secret, associatedData);
+
+            testCase.verifyEqual(blake2impl.bytesToHex(tag), expectedValue);
+        end
+
         function Argon2id_RFC9106(testCase)
             % RFC 9106 - Section 5.3
 
