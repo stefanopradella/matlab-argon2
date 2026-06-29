@@ -1,5 +1,7 @@
 # matlab-argon2
 
+[![View matlab-argon2 on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://it.mathworks.com/matlabcentral/fileexchange/184163-matlab-argon2)
+
 MATLAB-native implementation of the Argon2 password-hashing and key-derivation algorithm based on [RFC 9106](https://datatracker.ietf.org/doc/html/rfc9106.html).
 Supports Argon2d, Argon2i, and Argon2id, configurable tag length, memory size, number of passes, parallelism, and optional secret and associated data.
 
